@@ -5,6 +5,8 @@
  */
 
 import React, { Component } from 'react';
+import Voice from 'react-native-voice';
+
 import {
   Platform,
   StyleSheet,
@@ -20,6 +22,38 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+  constructor(props) {
+    super(props);
+    Voice.onSpeechStart = this.onSpeechStartHandler.bind(this);
+    Voice.onSpeechEnd = this.onSpeechEndHandler.bind(this);
+    Voice.onSpeechResults = this.onSpeechResultsHandler.bind(this);
+    console.log('registered events');
+    // Voice.start('en-US');
+    // console.log('isAvailable', Voice.isAvailable());
+  }
+
+  onSpeechStartHandler = (e) => {
+    console.log('onSpeechStartHandler', e);
+  }
+
+  onSpeechEndHandler = (e) => {
+    console.log('onSpeechEndHandler', e);
+  }
+
+  onSpeechResultsHandler = (e) => {
+    console.log('onSpeechResultHandler', e);
+  }
+
+  componentDidMount() {
+    Voice.isAvailable().then(success => {
+      console.log('isAvailable success', success);
+    }, reject => {
+      console.log('isAvailable reject', reject);
+    });
+    // Voice.start();
+  }
+
+  
   render() {
     return (
       <View style={styles.container}>
