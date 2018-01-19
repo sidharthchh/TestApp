@@ -57,6 +57,7 @@ export default class VoiceContainer extends Component<{}> {
 
   stopRecording = () => {
     Voice.stop();
+    this.props.finishRecording();
   }
 
   
