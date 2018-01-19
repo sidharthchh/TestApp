@@ -5,7 +5,7 @@ export default class HeaderExample extends Component {
     return (
         <Header>
           <Left>
-            <Button transparent>
+            <Button transparent onPress={this.props.goBack}>
               <Icon name='arrow-back' />
             </Button>
           </Left>

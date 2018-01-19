@@ -38,10 +38,20 @@
       });
     }
 
+    goBack = () => {
+      const backViews = {
+        VoiceContainer: 'DashBoardContainer',
+        DashBoardContainer: 'DashBoardContainer'
+      }
+      this.setState({
+        activeView: backViews[this.state.activeView]
+      });
+    }
+
     render() {
       return (
         <Container>
-          <Header />
+          <Header goBack={this.goBack}/>
           {
             this.views[this.state.activeView]
           }

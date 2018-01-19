@@ -65,7 +65,7 @@ export default class DashboardContainer extends Component<{}> {
   
   render() {
     return (
-        <Content contentContaineStyle={styles.flex}>
+        <Content contentContainerStyle={styles.container}>
             <Body style={{ alignSelf: 'stretch' }}>
             <List style={{ alignSelf: 'stretch' }} dataArray={this.state.list}
                 renderRow={(item) =>
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     // // alignItems: 'center',
     // backgroundColor: '#F5FCFF',
+    overflow: 'scroll'
   },
   flex: {
     flex: 1,

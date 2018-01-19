@@ -7,8 +7,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "native-base": "^2.3.7",
     "react": "16.2.0",
+    "react-cookie": "^2.1.2",
     "react-native": "0.52.0",
     "react-native-voice": "^0.2.5"
   },
