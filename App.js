@@ -6,6 +6,8 @@
 
 import React, { Component } from 'react';
 import Voice from 'react-native-voice';
+import Header from './src/components/HeaderComponent/HeaderComponent';
+import { Container } from 'native-base';
 
 import {
   Platform,
@@ -50,13 +52,14 @@ export default class App extends Component<{}> {
     }, reject => {
       console.log('isAvailable reject', reject);
     });
-    // Voice.start();
+    Voice.start();
   }
 
   
   render() {
-    return (
-      <View style={styles.container}>
+    return [
+      <Header />,
+      <Container style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
@@ -66,8 +69,8 @@ export default class App extends Component<{}> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
-      </View>
-    );
+      </Container>
+    ];
   }
 }
 
@@ -77,6 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    marginTop: -50
   },
   welcome: {
     fontSize: 20,
