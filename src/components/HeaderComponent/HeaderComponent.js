@@ -3,7 +3,6 @@ import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'nativ
 export default class HeaderExample extends Component {
   render() {
     return (
-      <Container>
         <Header>
           <Left>
             <Button transparent>
@@ -11,7 +10,7 @@ export default class HeaderExample extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Header</Title>
+            <Title>MeetNotes</Title>
           </Body>
           <Right>
             <Button transparent>
@@ -19,7 +18,6 @@ export default class HeaderExample extends Component {
             </Button>
           </Right>
         </Header>
-      </Container>
     );
   }
 }
