@@ -4,10 +4,10 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import { Container, Body, Content, Button, Icon, List, ListItem } from 'native-base';
+import React, {Component} from 'react';
+import {Container, Body, Card, CardItem, Content, Button, Icon, List, ListItem} from 'native-base';
 import getMeetings from '../../../apiService';
-import { apiService } from '../../../apiService';
+import {apiService} from '../../../apiService';
 
 import {
     Platform,
@@ -30,7 +30,7 @@ export default class InsightContainer extends Component<{}> {
         this.getInsights();
     }
 
-    setList = (list) => this.setState({ list: list });
+    setList = (list) => this.setState({list: list});
 
     getInsights = () => {
         // get the insights here and return
@@ -41,15 +41,30 @@ export default class InsightContainer extends Component<{}> {
     render() {
         return (
             <Content contentContaineStyle={styles.flex}>
-                <Body style={{ alignSelf: 'stretch' }}>
-                <List style={{ alignSelf: 'stretch' }} dataArray={this.state.list}
-                      renderRow={(item) =>
-                          <ListItem>
-                              <Text >
-                                  {item.title}
-                              </Text>
-                          </ListItem>
-                      } />
+                <Body style={{alignSelf: 'stretch'}}>
+                <Card style={styles.successMessageCard}>
+                    <CardItem>
+                        <Body style={styles.successMessageContainer}>
+                        <Image style={styles.iconStyle} source={require('../../img/checked.png')}/>
+                        <Text style={styles.successText}> Successfully Recorded </Text>
+                        </Body>
+                    </CardItem>
+                </Card>
+                <Card style={styles.insightCard}>
+                    <CardItem header>
+                        <Text style={styles.insightHeader}>Insights</Text>
+                    </CardItem>
+                    <Body style={styles.insightContainer}>
+                    <List style={{alignSelf: 'stretch'}} dataArray={this.state.list}
+                          renderRow={(item) =>
+                              <ListItem>
+                                  <Text>
+                                      {item.title}
+                                  </Text>
+                              </ListItem>
+                          }/>
+                    </Body>
+                </Card>
                 </Body>
             </Content>
         );
@@ -67,19 +82,38 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     contentCard: {
-        // alignSelf: 'flex-end'
         height: 450
     },
-    controlCard: {
+    successMessageCard: {
         flex: 1,
-        height: 100,
         justifyContent: 'center',
         alignItems: 'center'
     },
-    controlsContainer: {
+    successMessageContainer: {
         flex: 1,
         justifyContent: 'space-around',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'column',
+    },
+    successText: {
+        color: 'green',
+        fontSize: 12
+    },
+    iconStyle: {
+        alignSelf: 'center',
+        marginTop: 40
+    },
+    insightCard: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    insightContainer: {
+        flex: 1,
+        justifyContent: 'space-around',
+        flexDirection: 'row',
+    },
+    insightHeader: {
+        fontWeight: 'bold',
+        fontSize: 20
     }
 });
